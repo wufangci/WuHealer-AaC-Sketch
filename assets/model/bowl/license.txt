@@ -1,0 +1,11 @@
+Model Information:
+* title:	Free Bowl
+* source:	https://sketchfab.com/3d-models/free-bowl-423c9b6a27254a00aa283647a7e9b1ba
+* author:	Filip (https://sketchfab.com/filip.hans.nyberg)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Free Bowl" (https://sketchfab.com/3d-models/free-bowl-423c9b6a27254a00aa283647a7e9b1ba) by Filip (https://sketchfab.com/filip.hans.nyberg) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

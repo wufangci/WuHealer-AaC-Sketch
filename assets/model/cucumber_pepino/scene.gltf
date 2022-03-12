@@ -1,0 +1,424 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 266,
+      "max": [
+        3.442302942276001,
+        1.187442660331726,
+        2.47866153717041
+      ],
+      "min": [
+        1.3088629245758057,
+        -1.0218493938446045,
+        -2.480700731277466
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3192,
+      "componentType": 5126,
+      "count": 266,
+      "max": [
+        0.9992461800575256,
+        0.999588668346405,
+        0.981391191482544
+      ],
+      "min": [
+        -0.9992461800575256,
+        -0.9999982118606567,
+        -0.9988080263137817
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 266,
+      "max": [
+        0.9241422414779663,
+        0.9996973276138306,
+        0.999588668346405,
+        1.0
+      ],
+      "min": [
+        -0.9241423606872559,
+        -0.05982476472854614,
+        -0.9999982118606567,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 266,
+      "max": [
+        0.9966268539428711,
+        0.9998912215232849
+      ],
+      "min": [
+        0.00010879742330871522,
+        0.00010879742330871522
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 1488,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 6384,
+      "componentType": 5126,
+      "count": 346,
+      "max": [
+        3.0455329418182373,
+        1.0990513563156128,
+        3.002315044403076
+      ],
+      "min": [
+        1.0059869289398193,
+        -1.0266696214675903,
+        -3.002315044403076
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 10536,
+      "componentType": 5126,
+      "count": 346,
+      "max": [
+        0.9999983310699463,
+        1.0,
+        0.9981994032859802
+      ],
+      "min": [
+        -0.9999983906745911,
+        -1.0,
+        -0.9981994032859802
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 4256,
+      "componentType": 5126,
+      "count": 346,
+      "max": [
+        1.0,
+        0.9999983310699463,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9199092388153076,
+        0.0,
+        -0.9998360872268677,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2128,
+      "componentType": 5126,
+      "count": 346,
+      "max": [
+        0.6663691401481628,
+        0.6263254880905151
+      ],
+      "min": [
+        0.013460435904562473,
+        0.00010879742330871522
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 5952,
+      "componentType": 5125,
+      "count": 2064,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "ArnoldE (https://sketchfab.com/arnoldescorcia906)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/cucumber-pepino-6a7d355f7b214cdaad689f7f000ad1f2",
+      "title": "Cucumber - Pepino"
+    },
+    "generator": "Sketchfab-12.67.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 14208,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4896,
+      "byteOffset": 14208,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 14688,
+      "byteOffset": 19104,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 9792,
+      "byteOffset": 33792,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 43584,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/pepino_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/pepino_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/pepino_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "pepino",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 3
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "ModPepino_pepino_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "ModPepinoCompleto_pepino_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.000964434293564409,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.1414743169066086e-19,
+        -0.000964434293564409,
+        0.0,
+        0.0,
+        0.000964434293564409,
+        2.1414743169066086e-19,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "70d6a0724d534bd7945fce5c48d88488.fbx"
+    },
+    {
+      "children": [
+        3,
+        5
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        -83.43722534179211,
+        -7.2943141785593816e-06,
+        2.718729506199142e-05,
+        0.0,
+        8.601604734451914e-06,
+        -83.33942810183815,
+        4.038285538994709,
+        0.0,
+        2.6802390533447867e-05,
+        4.0382855389972825,
+        83.33942810183417,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "ModPepino"
+    },
+    {
+      "mesh": 0,
+      "name": "ModPepino_pepino_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        83.43722534179688,
+        1.852656156771612e-14,
+        -1.8617860330537248e-14,
+        0.0,
+        1.8617852416539452e-14,
+        -83.4362020222289,
+        0.41014453768199977,
+        0.0,
+        -1.8526562711056095e-14,
+        -0.41014453768199977,
+        -83.4362020222289,
+        0.0,
+        -1.1920928955078125e-05,
+        0.0,
+        5.293955920339377e-21,
+        1.0
+      ],
+      "name": "ModPepinoCompleto"
+    },
+    {
+      "mesh": 1,
+      "name": "ModPepinoCompleto_pepino_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9728,
+      "minFilter": 9986,
+      "wrapS": 10497,
+      "wrapT": 10497
+    },
+    {
+      "magFilter": 9729,
+      "minFilter": 9729,
+      "wrapS": 10497,
+      "wrapT": 10497
+    },
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 1,
+      "source": 1
+    },
+    {
+      "sampler": 2,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}

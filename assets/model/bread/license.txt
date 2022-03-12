@@ -1,0 +1,11 @@
+Model Information:
+* title:	Loaf of Bread (Game Ready / 2K PBR)
+* source:	https://sketchfab.com/3d-models/loaf-of-bread-game-ready-2k-pbr-a605905280c54e90ae8876b50f93f2d1
+* author:	Meerschaum Digital (https://sketchfab.com/meerschaumdigital)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Loaf of Bread (Game Ready / 2K PBR)" (https://sketchfab.com/3d-models/loaf-of-bread-game-ready-2k-pbr-a605905280c54e90ae8876b50f93f2d1) by Meerschaum Digital (https://sketchfab.com/meerschaumdigital) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
