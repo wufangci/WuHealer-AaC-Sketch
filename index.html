@@ -29,17 +29,16 @@
           id="wood"
           src="./texture/wood/TexturesCom_Wood_Worn3_512_albedo.png"
         />
+        <img id="marble" src="./assets/textures/marble/marble06.jpg" />
+
         <img id="snow-img-src" src="./assets/images/cart02.jpg" />
         <img id="greenocean-img-src" src="./assets/images/cart.jpeg" />
         <img id="sand-img-src" src="./assets/images/cart03.jpg" />
         <img id="ocean-img-src" src="./assets/images/cart04.jpg" />
         <img id="mountain-img-src" src="./assets/images/cart04.jpg" />
         <img id="cart05-img-src" src="./assets/images/cart05.jpg" />
-        <img id="marble" src="./assets/textures/marble/marble06.jpg" />
-        <a-asset-item
-          id="helmet"
-          src="./assets/model/DamagedHelmet/DamagedHelmet.gltf"
-        >
+        <img id="cart00-img-src" src="./assets/images/cart00.jpg" />
+        <img id="ab06-img-src" src="./assets/images/ab06.jpg" />
         </a-asset-item>
         <a-asset-item id="bench" src="./assets/model/modern_bench/scene.gltf">
         </a-asset-item>
@@ -140,7 +139,7 @@
       <!-- a-entity + material + geometry -->
       <rw-room
         id="main-room"
-        material="color: white;"
+        material="color: white; side: double;"
         length="12"
         width="12"
         height="6"
@@ -283,17 +282,7 @@
         >
         </a-gltf-model>
       </a-cylinder>
-      <!-- 
-      <a-gltf-model
-        id="bowl_model"
-        position="0 0.5 0"
-        scale="0.0- 0.02 0.02"
-        src="#bowl"
-        camera-cube-env="distance: 100000; 
-      resolution: 256"
-      >
-      </a-gltf-model>
-    -->
+
       <a-gltf-model position="3 1.4 2" scale="2 2 2" src="#chocolate">
       </a-gltf-model>
       <a-gltf-model position="0.7 1 2.1" scale="2 2 2" src="#chocolate">
@@ -314,6 +303,28 @@
         material="shader:standard"
       >
       </a-image>
+
+      <a-image
+      id="cart00-img"
+      position="-4.99 2 3"
+      rotation="0 90 0"
+      height="1.5"
+      width="4"
+      src="#cart00-img-src"
+      material="shader:standard"
+    >
+    </a-image>
+
+    <a-image
+    id="ab06-img"
+    position="-4.99 2 5.8"
+    rotation="0 90 0"
+    height="1.5"
+    width="1"
+    src="#ab06-img-src"
+    material="shader:standard"
+  >
+  </a-image>
       <a-box
         position="1 2.5 -2"
         width="3.5"
@@ -423,46 +434,6 @@
       ></a-text>
 
       <!-- 故事招牌-->
-
-      <!-- mailbox 信箱-->
-      <!-- <a-box
-        src="#wood"
-        id="mail_box_story_front"
-        depth="0.07"
-        scale="0.5 0.5 0.5 "
-        position="-0.4 2 3.136"
-        rotation=" -40 -70 0"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-        material="shader:standard"
-        shadow
-      ></a-box>
-      <a-box
-        src="#wood"
-        id="mail_box_story_back"
-        depth="0.07"
-        scale="0.5 0.5 0.5"
-        position="-0.15 1.989 3.051"
-        rotation=" 40 -70 0"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-        material="shader:standard"
-        shadow
-      ></a-box>
-
-      <a-box
-        id="mail_box_m"
-        src="#wood"
-        scale="0.5 0.5 0.5"
-        position="-0.2 1.57 3.1"
-        rotation="0 -75 0"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-        material="shader:standard"
-        shadow
-      ></a-box> -->
-
-      <!-- mailbox 信箱-->
 
       <a-box
         id="table_box_s"
