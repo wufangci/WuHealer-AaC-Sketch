@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VR Exhibition</title>
+    <title>WuHealer-VR-Sketch</title>
     <meta charset="utf-8" name="description" content="" />
 
     <!-- aframe script -->
@@ -11,13 +11,12 @@
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="./js/aframe-room-component.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
   </head>
-
   <body>
-    <!-- stats 顯示目前渲染的狀態  -->
-    <a-scene background="color: dark" stats>
-      <a-assets>
+    <a-scene background="color: #E2E2E2">
+      <a-asset>
         <img
           id="wood_normal"
           src="./texture/wood/TexturesCom_Wood_Worn3_512_normal.png"
@@ -30,322 +29,520 @@
           id="wood"
           src="./texture/wood/TexturesCom_Wood_Worn3_512_albedo.png"
         />
-      </a-assets>
+        <img id="snow-img-src" src="./assets/images/cart02.jpg" />
+        <img id="greenocean-img-src" src="./assets/images/cart.jpeg" />
+        <img id="sand-img-src" src="./assets/images/cart03.jpg" />
+        <img id="ocean-img-src" src="./assets/images/cart04.jpg" />
+        <img id="mountain-img-src" src="./assets/images/cart04.jpg" />
+        <img id="marble" src="./assets/textures/marble/marble06.jpg" />
+        <a-asset-item
+          id="helmet"
+          src="./assets/model/DamagedHelmet/DamagedHelmet.gltf"
+        >
+        </a-asset-item>
+        <a-asset-item id="bench" src="./assets/model/modern_bench/scene.gltf">
+        </a-asset-item>
+        <a-mixin
+          id="spot-light"
+          light="type:spot;
+						color:#E5D5A4;
+						intensity:0.2;
+						penumbra:1;
+						angle:15;"
+        >
+        </a-mixin>
+      </a-asset>
+      <a-camera position="0 1.5 0"></a-camera>
 
-      <!-- room gray -->
+      <!-- ambient light -->
+      <a-light id="amb" type="ambient" color="white" intensity="0.2"> </a-light>
+      <!-- directional light -->
+      <a-light
+        id="dir"
+        position="-1 2 -2"
+        type="directional"
+        color="white"
+        intensity="0.1"
+        light="cast-shadow:true"
+      >
+      </a-light>
+      <!-- heisphere light -->
+      <a-light
+        id="hemi"
+        type="hemisphere"
+        color="#D2D2D2"
+        ground-color="#9E9E9E"
+        position="-2 2 5"
+        intensity="0.7"
+      >
+      </a-light>
+      <!-- spot light -->
+      <a-entity
+        id="spot-snow"
+        mixin="spot-light"
+        position="-3 6 0"
+        light="target:#snow-img"
+      >
+      </a-entity>
+      <a-entity
+        id="spot-mountain"
+        mixin="spot-light"
+        position="-1 6 4"
+        light="target:#mountain-img;
+					cast-shadow:true"
+      >
+      </a-entity>
+      <a-entity
+        id="spot-ocean"
+        mixin="spot-light"
+        position="5 6 -2"
+        light="target:#ocean-img;"
+      >
+      </a-entity>
+      <a-entity
+        id="spot-sand"
+        mixin="spot-light"
+        position="5 6 2"
+        light="target:#sand-img;"
+      >
+      </a-entity>
+      <a-entity
+        id="spot-helmet"
+        mixin="spot-light"
+        position="2.5 3 -7.5"
+        light="target:#helmet-model;
+					cast-shadow:true"
+      >
+      </a-entity>
+      <!-- material="color: white; side: double;" -->
+      <!-- a-entity + material + geometry -->
+      <rw-room
+        id="main-room"
+        material="color: white;"
+        length="12"
+        width="12"
+        height="6"
+        position="-5 0 -5"
+      >
+        <rw-wall position="2 0 0">
+          <!-- door-main -->
+          <rw-doorhole id="door-main"> </rw-doorhole>
+          <rw-doorlink
+            from="#door-main"
+            to="#door-second"
+            material="color:#CCC"
+            position="2.6 0 0"
+            width="2"
+            height="3"
+          >
+            <rw-sides></rw-sides>
+            <rw-ceiling></rw-ceiling>
+          </rw-doorlink>
+        </rw-wall>
+        <rw-wall position="1 0 1"> </rw-wall>
+        <rw-wall position="0 0 1"> </rw-wall>
+        <rw-wall position="0 0 0"> </rw-wall>
+      </rw-room>
+      <rw-room
+        id="second-room"
+        material="color: white ; side: double;"
+        length="5"
+        width="10"
+        height="6"
+        position="-5 0 -10.2"
+      >
+        <rw-wall></rw-wall>
+        <rw-wall></rw-wall>
+        <rw-wall>
+          <rw-doorhole id="door-second"> </rw-doorhole>
+        </rw-wall>
+        <rw-wall></rw-wall>
+      </rw-room>
 
-      <!-- 攤車 ------------------------------->
-      <!-- 木箱 -->
+      <a-plane
+        id="floor"
+        rotation="-90 0 0"
+        width="30"
+        height="45"
+        src="#marble"
+        material="repeat: 5 5; metalness:0; roughness:0.5"
+        shadow
+      >
+      </a-plane>
+
+      <!-- title text -->
+
+      <!-- <a-text
+        id="desc"
+        position="0.6 3.1 -5"
+        rotation="0 0 0"
+        color="black"
+        value="WU HEALER"
+        width="3.5"
+        wrap-count="80"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/oswald/Oswald-Regular.json"
+      ></a-text>
+      <a-text
+        id="desc"
+        position="0.6 1.8 -5"
+        rotation="0 0 0"
+        color="black"
+        value="Wu Healer (Wu Yu Zu, 巫癒子 in Mandarin), a generative space where a group of people from all ethnic groups, fields and places in Taiwan gather and learn together about core cultural values and life philosophy of Taiwanese indigenous peoples, and explore how to co-create new modes of cultural learning and a path to cultural sustainability.
+        The core value proposition of the team includes “root-seeking” and “healing-encountering”. By conducting field research in tribes, doing document analysis, interviewing members of indigenous communities, holding collaborative and participatory workshops and lectures, and other activities, the team has been trying to truly and genuinely understand the traditional cultural rituals, beliefs, life philosophy and worldview of Taiwanese indigenous peoples, especially the connotations of healing practices that are embedded in indigenous communities, and to see them as a medium to explore the ways in which the core spirit of indigenous culture can be carried forward and passed on in contemporary and everyday life - whether indigenous people live in so-called “tribes” or in the “city”. The main direction that guide the team is “cultural sustainability”.
+        We hope to understand and learn from indigenous culture by continuously searching for its origins and through various interactive interfaces to co-create a platform where indigenous and non-indigenous Taiwanese can meet together, like “mirrors”, people inside can reflect, know, interact with and understand each other."
+        width="3.5"
+        wrap-count="80"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/oswald/Oswald-Regular.json"
+      ></a-text> -->
+
+      <!-- title text left -->
+
+      <a-text
+        position="-4.99 3 -1"
+        rotation="0 90 -1"
+        color="black"
+        value="WU HEALER"
+        width="2"
+        wrap-count="80"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/oswald/Oswald-Regular.json"
+      ></a-text>
+      <a-text
+        position="-4.99 2 -1"
+        rotation="0 90 -1"
+        color="black"
+        value="Wu Healer (Wu Yu Zu, 巫癒子 in Mandarin), a generative space where a group of people from all ethnic groups, fields and places in Taiwan gather and learn together about core cultural values and life philosophy of Taiwanese indigenous peoples, and explore how to co-create new modes of cultural learning and a path to cultural sustainability.
+        The core value proposition of the team includes “root-seeking” and “healing-encountering”. By conducting field research in tribes, doing document analysis, interviewing members of indigenous communities, holding collaborative and participatory workshops and lectures, and other activities, the team has been trying to truly and genuinely understand the traditional cultural rituals, beliefs, life philosophy and worldview of Taiwanese indigenous peoples, especially the connotations of healing practices that are embedded in indigenous communities, and to see them as a medium to explore the ways in which the core spirit of indigenous culture can be carried forward and passed on in contemporary and everyday life - whether indigenous people live in so-called “tribes” or in the “city”. The main direction that guide the team is “cultural sustainability”.
+        We hope to understand and learn from indigenous culture by continuously searching for its origins and through various interactive interfaces to co-create a platform where indigenous and non-indigenous Taiwanese can meet together, like “mirrors”, people inside can reflect, know, interact with and understand each other."
+        width="2"
+        wrap-count="80"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/oswald/Oswald-Regular.json"
+      ></a-text>
+
+      <!-- title text right -->
+
+      <a-text
+        position="7 2 -1.5"
+        rotation="0 -90 0"
+        color="black"
+        value="title"
+        width="1"
+        wrap-count="80"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/oswald/Oswald-Regular.json"
+      ></a-text>
+      <a-text
+        position="7 1 -1.5"
+        rotation="0 -90 0"
+        color="black"
+        value="By conducting field research in tribes, doing document analysis,
+        interviewing members of indigenous communities, holding collaborative 
+        and participatory workshops and lectures,and otheractivities, the team
+        has been trying to truly and genuinely understand the traditional cultural 
+        rituals, beliefs, life philosophy and worldview of Taiwanese indigenous peoples"
+        wrap-count="300"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/oswald/Oswald-Regular.json"
+      ></a-text>
+
+      <!-- show objects -->
+      <a-cylinder
+        id="helmet-show"
+        position="2.5 0.1 -7.5"
+        rotation="0 -90 0"
+        height="0.2"
+        radius="0.5"
+        shadow
+      >
+        <a-gltf-model
+          id="helmet-model"
+          position="0 0.5 0"
+          scale="0.3 0.3 0.3"
+          src="#helmet"
+          camera-cube-env="distance: 100000; 
+					resolution: 256"
+        >
+        </a-gltf-model>
+      </a-cylinder>
+
+      <!-- show images -->
+      <a-image
+        id="snow-img"
+        position="-4.99 2 0"
+        rotation="0 90 0"
+        height="1.5"
+        width="1"
+        src="#snow-img-src"
+        material="shader:standard"
+      >
+      </a-image>
       <a-box
-        id=""
+        position="1 2 -2"
+        width="3.1"
+        height="2.1"
+        depth="0.1"
+        color="#D5D5D5"
+        shadow
+      >
+        <a-image
+          id="greenocean-img"
+          position="0 0 0.06"
+          height="2.05"
+          width="3.1"
+          src="#greenocean-img-src"
+        >
+        </a-image>
+      </a-box>
+      <a-image
+        id="sand-img"
+        position="6.99 2 1.5"
+        rotation="0 -90 0"
+        height="1.5"
+        width="1"
+        src="#sand-img-src"
+        material="shader:standard"
+      >
+      </a-image>
+      <a-image
+        id="ocean-img"
+        position="6.99 2 -1"
+        rotation="0 -90 0"
+        height="1.5"
+        width="1"
+        src="#ocean-img-src"
+        material="shader:standard"
+      >
+      </a-image>
+
+      <!-- 木箱 -->
+
+      <a-box
+        id="table_box_m"
         src="#wood"
-        position="-10  -0.5 10"
+        position="0 0.31 0"
         rotation="0 45 0"
         normal-map="#wood_normal"
         roughness-map="#wood_roughness"
         material="shader:standard"
-      ></a-box>
-      <!-- 桌面 -->
-      <a-box
-        id=""
-        src="#wood"
-        width="8"
-        height="0.2"
-        position="-6.5  1.1 8"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-      <!-- 桌腳 右 -->
-      <!-- 右上 -->
-      <a-box
-        id=""
-        src="#wood"
-        width="0.1"
-        height="2.5"
-        position="-4  2 8"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-      <!-- 右下 -->
-      <a-box
-        id=""
-        src="#wood"
-        width="0.1"
-        height="2"
-        position="-4  0 8"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-      <!-- 桌腳 中 -->
-      <!-- 中上 -->
-      <a-box
-        id=""
-        src="#wood"
-        width="0.1"
-        height="2.069"
-        position="-6.05  2.21 8"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-      <!-- 中下 -->
-      <a-box
-        id=""
-        src="#wood"
-        width="0.1"
-        height="2"
-        position="-7  0 8"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-      <!-- 桌腳 左 -->
-      <a-box
-        id=""
-        src="#wood"
-        width="0.1"
-        height="2"
-        position="-10  0 8"
-        roughness="10"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-      <!-- 櫃 上 -->
-
-      <a-box
-        id=""
-        src="#wood"
-        width="2"
-        height="0.1"
-        position="-5  3.2 8"
-        roughness="10"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-
-      <a-box
-        id=""
-        src="#wood"
-        width="2"
-        height="0.1"
-        position="-5  2.2 8"
-        roughness="10"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-
-      <a-box
-        id=""
-        src="#wood"
-        width="2"
-        height="0.1"
-        position="-5  1.25 8"
-        roughness="10"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box>
-
-      <!-- <a-box
-        id="box06"
-        src="#wood"
-        width="0.1"
-        height="1.8"
-        position="-9  0 8"
-        roughness="10"
-        normal-map="#wood_normal"
-        roughness-map="#wood_roughness"
-      ></a-box> -->
-
-      <!-- 攤車 ---------------------------------->
-
-      <rw-room
-        id="room_gray"
-        material="color: #818181 ; side: double;"
-        length="24"
-        width="40"
-        height="14"
-        position="-30 -1 12"
-        rotation="0 45 0"
-      >
-        <rw-wall id="room_gray_wall01" position="1 0 0">
-          <rw-doorhole id="doorMain"></rw-doorhole>
-        </rw-wall>
-        <rw-wall id="room_gray_wall02" position="1 0 1">
-          <rw-doorhole id="door_gray"></rw-doorhole>
-        </rw-wall>
-        <rw-wall id="room_gray_wall03" position="0 0 1"></rw-wall>
-        <rw-wall id="room_gray_wall04" position="0 0 0"></rw-wall>
-        <!-- <rw-ceiling material="color:  lightgrey"></rw-ceiling> -->
-        <rw-floor material="color: darkgrey"></rw-floor>
-      </rw-room>
-
-      <!-- <rw-doorLink
-        from="#door_gray"
-        to="#door_white"
-        position="-25 8 12"
-        width="1.5"
-        height="6"
-      ></rw-doorLink> -->
-
-      <!-- room right -->
-      <!-- 
-      <rw-room
-        id="room_white"
-        material="color: #818181 ; side: double;"
-        length="20"
-        width="20"
-        height="9"
-        position="0 -1 0"
-      >
-        <rw-wall id="room_white_wall01" position="1 0 0" width="0.2"></rw-wall>
-        <rw-wall id="room_white_wall02" position="1 0 1" width="0.2"></rw-wall>
-        <rw-wall id="room_white_wall03" position="0 0 1" width="0.2"></rw-wall>
-        <rw-wall id="room_white_wall04" position="0 0 0" width="0.2">
-          <rw-doorhole id="door_white"></rw-doorhole>
-        </rw-wall>
-
-        <rw-floor material="color: darkgrey;"></rw-floor>
-      </rw-room> -->
-
-      <!-- room left -->
-
-      <!-- 文字 -->
-      <!-- <a-text
-        value="EXHIBITION"
-        color="#181818"
-        font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
-        position="-3 3 0"
-      ></a-text>
-      <a-text
-        width="2"
-        value="--------------------------"
-        color="#1F1E1E"
-        font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
-        position="-3 2.76 0"
-      ></a-text>
-      <a-text
-        width="2"
-        value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-        color="#1D1D1D"
-        position="-3 2 0"
-      ></a-text> -->
-
-      <!-- 展卡 -->
-      <!-- <a-text
-        position="-7.05 1.8  0.11"
-        width="0.3"
-        value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-        color="#181818"
-      ></a-text>
-      <a-box
-        position="-7 1.8  0.1"
-        width="0.3"
-        height="0.3"
-        scale="2 1 0.02"
-        color="#616161"
         shadow
-      ></a-box> -->
+      ></a-box>
 
-      <!-- 圖片 -->
+      <a-text
+        position="2.79 2 2.25"
+        rotation="-10 -10 0"
+        color="white"
+        value="STORY
+        CHANGE"
+        width="1"
+        opacity="0.6"
+        wrap-count="15"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/oswald/Oswald-Regular.json"
+      ></a-text>
 
-      <!-- <a-image
-        width="6"
-        height="3"
-        src="#img_wall01"
-        target="room01_wall01"
-        position="-10.5 2.3 0.1"
-        id="img"
-      ></a-image> -->
+      <!-- 故事招牌-->
+      <a-box
+        id="table_box_story_front"
+        depth="0.1"
+        color="#064145"
+        scale="0.7 0.7 0.7 "
+        position="3 2.1 2.2"
+        rotation=" 
+        -10 -10 0"
+        material="shader:standard"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_box_story_back"
+        depth="0.1"
+        color="#064145"
+        scale="0.7 0.7 0.7 "
+        position="3 2.1 2.1"
+        rotation=" 10 -10 0"
+        material="shader:standard"
+        shadow
+      ></a-box>
+      <!-- 故事招牌-->
 
-      <!-- <a-image
-        src="#img_wall03"
-        position="-8 1.3  6"
-        geometry="primitive: box; depth:3;"
-        rotation="0 -90 0"
-        width="2"
-        height="2"
-        target="room01_wall04"
-        material="opacity: 0.7;"
-        id="img_box"
-      ></a-image> -->
+      <!-- mailbox 信箱-->
+      <a-box
+        src="#wood"
+        id="mail_box_story_front"
+        depth="0.07"
+        scale="0.5 0.5 0.5 "
+        position="-0.4 2 3.136"
+        rotation=" -40 -70 0"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        material="shader:standard"
+        shadow
+      ></a-box>
+      <a-box
+        src="#wood"
+        id="mail_box_story_back"
+        depth="0.07"
+        scale="0.5 0.5 0.5"
+        position="-0.15 1.989 3.051"
+        rotation=" 40 -70 0"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        material="shader:standard"
+        shadow
+      ></a-box>
 
-      <!-- <a-image
-        src="#img_wall04"
-        position="-14.8 2.5 7"
-        rotation="0 -90 0"
+      <a-box
+        id="mail_box_m"
+        src="#wood"
+        scale="0.5 0.5 0.5"
+        position="-0.2 1.57 3.1"
+        rotation="0 -75 0"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        material="shader:standard"
+        shadow
+      ></a-box>
+
+      <!-- mailbox 信箱-->
+
+      <a-box
+        id="table_box_s"
+        src="#wood"
+        position="4 0.31 5"
+        scale="0.7 0.7 0.7"
+        rotation="0 45 0"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        material="shader:standard"
+        shadow
+      ></a-box>
+
+      <!-- 攤車  -1.5-->
+      <a-box
+        id="table"
+        src="#wood"
         width="4"
-        height="3"
-        target="room01_wall04"
-        material="opacity: 0.5;"
-        id="wall_03"
-      ></a-image> -->
+        height="0.05"
+        position="2.2 1 2"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        roughness="0.9"
+        shadow
+      ></a-box>
+      <!-- board -->
+      <a-box
+        id="table_board_top"
+        src="#wood"
+        width="1"
+        height="0.05"
+        position="3  1.7 2"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_board_bottom"
+        src="#wood"
+        width="1"
+        height="0.05"
+        position="3  1.4 2"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <!-- 上方板子的左邊柱子 -->
+      <a-box
+        id="table_foot_r_board_front"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="0.75"
+        position="2.5 1.4 2.47"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_foot_r_board_back"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="0.75"
+        position="2.5  1.4 1.55"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <!-- 上方板子的左邊柱子 -->
 
-      <!-- <a-image
-        width="6"
-        height="3"
-        src="./img/room01/29196508_1625241317524214_1821313394771230720_o.jpeg"
-        target="room01_wall01"
-        position="-10.5 2.3 0.5"
-        id="img"
-      ></a-image> -->
-
-      <!-- 引入環境光 -->
-
-      <!-- <a-light
-        id="light01"
-        type="ambient "
-        color="white"
-        intensity="0.5"
-      ></a-light> -->
-
-      <!-- 引入直射光  type : directional  , 光底下的陰影 cast-shadow -->
-
-      <!-- <a-light
-        type="directional"
-        color="white"
-        position="5 29 8"
-        intensity="0.6"
-        light="cast-shadow: true"
-      ></a-light> -->
-      <!-- 
-      <a-light
-        type="directional"
-        color="white"
-        position="-8 1.8  20"
-        intensity=""
-        light="cast-shadow: true"
-      ></a-light> -->
-
-      <!-- <a-light type="directional" color="white" position="5 29 8"></a-light> -->
-
-      <!-- 引入點光  type point -->
-
-      <!-- <a-light
-        type="point"
-        color="white"
-        position="-8 4 6"
-        distance="15"
-        decay="0.6"
-      ></a-light> -->
-
-      <!-- 引入聚光 type spot -->
-      <!-- <a-light
-        position="-10 2 4"
-        type="spot"
-        color="white"
-        angle="50"
-        penumbra="1"
-        target="#img"
-      ></a-light> -->
-      <!-- 
-      <a-light
-        position="-3 2 4"
-        type="spot"
-        color="white"
-        angle="50"
-        penumbra="1"
-        intensity="1"
-      ></a-light> -->
+      <a-box
+        id="table_foot_r_front"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="3.5"
+        position="3.46  0 1.5"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_foot_r_back"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="3.5"
+        position="3.46  0 2.5"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_foot_m_front"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="2"
+        position="2  0 2.4"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_foot_m_back"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="2"
+        position="2  0 1.6"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_foot_l_front"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="2"
+        position="0.25  0 2.4"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
+      <a-box
+        id="table_foot_l_back"
+        src="#wood"
+        depth="0.1"
+        width="0.1"
+        height="2"
+        position="0.25  0  1.6"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        shadow
+      ></a-box>
     </a-scene>
   </body>
-  <!-- 房間套件  本地下載安裝  -->
-  <script src="./js/aframe-room-component.js"></script>
 </html>

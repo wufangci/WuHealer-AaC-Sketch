@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WuHealer-VR-Sketch</title>
+    <meta charset="utf-8" name="description" content="" />
+
+    <!-- aframe script -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1f00d0beadf87bad7d275c174616e048f8b573fc/dist/aframe-master.min.js"></script>
+
+    <!-- other component -->
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/colinfizgig/aframe_Components/components/camera-cube-env.js"></script>
+  </head>
+
+  <body>
+    <!-- stats 顯示目前渲染的狀態  -->
+    <a-scene background="color: dark" stats>
+      <a-assets>
+        <img
+          id="wood_normal"
+          src="./texture/wood/TexturesCom_Wood_Worn3_512_normal.png"
+        />
+        <img
+          id="wood_roughness"
+          src="./texture/wood/TexturesCom_Wood_Worn3_512_roughness.png"
+        />
+        <img
+          id="wood"
+          src="./texture/wood/TexturesCom_Wood_Worn3_512_albedo.png"
+        />
+      </a-assets>
+
+      <!-- room gray -->
+
+      <!-- 攤車 ------------------------------->
+      <!-- 木箱 -->
+      <a-box
+        id=""
+        src="#wood"
+        position="-10  -0.5 10"
+        rotation="0 45 0"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+        material="shader:standard"
+      ></a-box>
+      <!-- 桌面 -->
+      <a-box
+        id=""
+        src="#wood"
+        width="8"
+        height="0.2"
+        position="-6.5  1.1 8"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+      <!-- 桌腳 右 -->
+      <!-- 右上 -->
+      <a-box
+        id=""
+        src="#wood"
+        width="0.1"
+        height="2.5"
+        position="-4  2 8"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+      <!-- 右下 -->
+      <a-box
+        id=""
+        src="#wood"
+        width="0.1"
+        height="2"
+        position="-4  0 8"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+      <!-- 桌腳 中 -->
+      <!-- 中上 -->
+      <a-box
+        id=""
+        src="#wood"
+        width="0.1"
+        height="2.069"
+        position="-6.05  2.21 8"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+      <!-- 中下 -->
+      <a-box
+        id=""
+        src="#wood"
+        width="0.1"
+        height="2"
+        position="-7  0 8"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+      <!-- 桌腳 左 -->
+      <a-box
+        id=""
+        src="#wood"
+        width="0.1"
+        height="2"
+        position="-10  0 8"
+        roughness="10"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+      <!-- 櫃 上 -->
+
+      <a-box
+        id=""
+        src="#wood"
+        width="2"
+        height="0.1"
+        position="-5  3.2 8"
+        roughness="10"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+
+      <a-box
+        id=""
+        src="#wood"
+        width="2"
+        height="0.1"
+        position="-5  2.2 8"
+        roughness="10"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+
+      <a-box
+        id=""
+        src="#wood"
+        width="2"
+        height="0.1"
+        position="-5  1.25 8"
+        roughness="10"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box>
+
+      <!-- <a-box
+        id="box06"
+        src="#wood"
+        width="0.1"
+        height="1.8"
+        position="-9  0 8"
+        roughness="10"
+        normal-map="#wood_normal"
+        roughness-map="#wood_roughness"
+      ></a-box> -->
+
+      <!-- 攤車 ---------------------------------->
+
+      <rw-room
+        id="room_gray"
+        material="color: #818181 ; side: double;"
+        length="24"
+        width="40"
+        height="14"
+        position="-30 -1 12"
+        rotation="0 45 0"
+      >
+        <rw-wall id="room_gray_wall01" position="1 0 0">
+          <rw-doorhole id="doorMain"></rw-doorhole>
+        </rw-wall>
+        <rw-wall id="room_gray_wall02" position="1 0 1">
+          <rw-doorhole id="door_gray"></rw-doorhole>
+        </rw-wall>
+        <rw-wall id="room_gray_wall03" position="0 0 1"></rw-wall>
+        <rw-wall id="room_gray_wall04" position="0 0 0"></rw-wall>
+        <!-- <rw-ceiling material="color:  lightgrey"></rw-ceiling> -->
+        <rw-floor material="color: darkgrey"></rw-floor>
+      </rw-room>
+
+      <!-- <rw-doorLink
+        from="#door_gray"
+        to="#door_white"
+        position="-25 8 12"
+        width="1.5"
+        height="6"
+      ></rw-doorLink> -->
+
+      <!-- room right -->
+      <!-- 
+      <rw-room
+        id="room_white"
+        material="color: #818181 ; side: double;"
+        length="20"
+        width="20"
+        height="9"
+        position="0 -1 0"
+      >
+        <rw-wall id="room_white_wall01" position="1 0 0" width="0.2"></rw-wall>
+        <rw-wall id="room_white_wall02" position="1 0 1" width="0.2"></rw-wall>
+        <rw-wall id="room_white_wall03" position="0 0 1" width="0.2"></rw-wall>
+        <rw-wall id="room_white_wall04" position="0 0 0" width="0.2">
+          <rw-doorhole id="door_white"></rw-doorhole>
+        </rw-wall>
+
+        <rw-floor material="color: darkgrey;"></rw-floor>
+      </rw-room> -->
+
+      <!-- room left -->
+
+      <!-- 文字 -->
+      <!-- <a-text
+        value="EXHIBITION"
+        color="#181818"
+        font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+        position="-3 3 0"
+      ></a-text>
+      <a-text
+        width="2"
+        value="--------------------------"
+        color="#1F1E1E"
+        font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+        position="-3 2.76 0"
+      ></a-text>
+      <a-text
+        width="2"
+        value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+        color="#1D1D1D"
+        position="-3 2 0"
+      ></a-text> -->
+
+      <!-- 展卡 -->
+      <!-- <a-text
+        position="-7.05 1.8  0.11"
+        width="0.3"
+        value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+        color="#181818"
+      ></a-text>
+      <a-box
+        position="-7 1.8  0.1"
+        width="0.3"
+        height="0.3"
+        scale="2 1 0.02"
+        color="#616161"
+        shadow
+      ></a-box> -->
+
+      <!-- 圖片 -->
+
+      <!-- <a-image
+        width="6"
+        height="3"
+        src="#img_wall01"
+        target="room01_wall01"
+        position="-10.5 2.3 0.1"
+        id="img"
+      ></a-image> -->
+
+      <!-- <a-image
+        src="#img_wall03"
+        position="-8 1.3  6"
+        geometry="primitive: box; depth:3;"
+        rotation="0 -90 0"
+        width="2"
+        height="2"
+        target="room01_wall04"
+        material="opacity: 0.7;"
+        id="img_box"
+      ></a-image> -->
+
+      <!-- <a-image
+        src="#img_wall04"
+        position="-14.8 2.5 7"
+        rotation="0 -90 0"
+        width="4"
+        height="3"
+        target="room01_wall04"
+        material="opacity: 0.5;"
+        id="wall_03"
+      ></a-image> -->
+
+      <!-- <a-image
+        width="6"
+        height="3"
+        src="./img/room01/29196508_1625241317524214_1821313394771230720_o.jpeg"
+        target="room01_wall01"
+        position="-10.5 2.3 0.5"
+        id="img"
+      ></a-image> -->
+
+      <!-- 引入環境光 -->
+
+      <!-- <a-light
+        id="light01"
+        type="ambient "
+        color="white"
+        intensity="0.5"
+      ></a-light> -->
+
+      <!-- 引入直射光  type : directional  , 光底下的陰影 cast-shadow -->
+
+      <!-- <a-light
+        type="directional"
+        color="white"
+        position="5 29 8"
+        intensity="0.6"
+        light="cast-shadow: true"
+      ></a-light> -->
+      <!-- 
+      <a-light
+        type="directional"
+        color="white"
+        position="-8 1.8  20"
+        intensity=""
+        light="cast-shadow: true"
+      ></a-light> -->
+
+      <!-- <a-light type="directional" color="white" position="5 29 8"></a-light> -->
+
+      <!-- 引入點光  type point -->
+
+      <!-- <a-light
+        type="point"
+        color="white"
+        position="-8 4 6"
+        distance="15"
+        decay="0.6"
+      ></a-light> -->
+
+      <!-- 引入聚光 type spot -->
+      <!-- <a-light
+        position="-10 2 4"
+        type="spot"
+        color="white"
+        angle="50"
+        penumbra="1"
+        target="#img"
+      ></a-light> -->
+      <!-- 
+      <a-light
+        position="-3 2 4"
+        type="spot"
+        color="white"
+        angle="50"
+        penumbra="1"
+        intensity="1"
+      ></a-light> -->
+    </a-scene>
+  </body>
+  <!-- 房間套件  本地下載安裝  -->
+  <script src="./js/aframe-room-component.js"></script>
+</html>
